@@ -88,7 +88,7 @@ for foodItem in foodList:
             print(f"Inserted {len(json_objects)} items into MongoDB")
         else:
             print("No data to insert")
-        time.sleep(7)
+        time.sleep(7200)
 
     except TimeoutException:
         print("Page load timed out after 10 seconds")
