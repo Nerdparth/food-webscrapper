@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb+srv://parthkapoor488:lv0j55TlWQLs03tY@cluster0.ibgca.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 db = client['food_database']
 collection = db['food_items']
 
