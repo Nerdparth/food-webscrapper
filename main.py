@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from pymongo import MongoClient
+from selenium.webdriver.chrome.options import Options
 
 client = MongoClient('mongodb+srv://parthkapoor488:lv0j55TlWQLs03tY@cluster0.ibgca.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
 db = client['food_database']
@@ -37,8 +38,16 @@ foodList = ['Pasi Paruppu Kosumalli  (Spiced Lentil Salad )', 'Mexican Grilled C
             'Nagaland Style Kali Dal ( In Hindi)', 'Parmesan And Fresh Herbs Savoury Scones', 'Labra Assamese Chunky Mix Vegetables', 'Pumpkin Curry With Chicken', 'Rajasthani Hari Mirch Ka Maas', 'Whole Wheat Waffles with Caramelised Bananas (Egg and Eggless )', 'Gujarati Tawa Handvo  With Sweet Corn', 'Jolada Roti  - Jowar Bhakri', 'Pancakes Drizzled With Chocolate Sauce Served With Fruits & Jaggery  (Breakfast In Bed)', 'Aam Ki Launji Pickle  - Sweet & Spicy Mango Pickle', 'Quinoa Phirnee  (Quinoa Milk Pudding)', 'Karwar Style Kelya Sasav -Ripened Banana Relish', 'Homemade Butter Naan  - Soft Yogurt Bread', 'Radish Leaves Pachadi', 'Vietnamese Chicken & Potato Curry', 'Alu Vadi Or Patrode  - Maharashtrian Snack With Colocasia Leaves', 'Cauliflower Moong Dal', 'Pirandai Oorugai  - Pirandai Pickle', 'Surati Jowar Vada', 'Kashmiri Mutton Yakhni', 'Hawaiian Chicken Skewers', 'Maharashtrian Style Kala Chana Cooked In Koli Masala', 'South Indian Filter Coffee  With Filter Coffee Powder', 'Refreshing Sweet Lime Soda', 'Spicy And Delicious Chicken Teriyaki Noodle', 'Beetroot Tambuli (Beetroot Raita With Coconut)', 'Malpua With Rose And Saffron Syrup', 'High Protein Broccoli and Dill Stuffed Paratha', 'Pacha & Mocha Parappu Sundal  - Green Sprouts & Flat Broad Bean Stir Fry', 'Triple Bean Vegetarian Cutlet or Patty', 'Spring Onion & Roasted Garlic Brown Rice', 'Kambu Murukku', 'Mohan Bhog  - Bengali Style Sooji Ka Halwa', 'Goan Style Frango Vera  - Chicken Vera', 'Smoked Tandoori Chicken  - Classic North Indian Chicken', 'Kuvar Pak', 'Hydration', 'Energy Boost', 'Exercise', 'Suppliments', 'Herbal Life Shake', 'Herbal Life Shake', 'Snacks', 'Meal composition', 'Energy Drink', 'Optional snack', 'Energy Booost', 'Light Dining Meal', 'Morning Drink', 'Afternoon Snack', 'Mid Morning Snack', 'Afternoon Meal', 'Herbal Control 90 Tablets', 'ShakeMate Shake', 'Cell U Loss Advanced Tablets', 'Cell Activator 60 Tablets', 'Low Personized Protein Powder', 'High Personized Protein Powder', 'Formula 1 Nutiritonal Shake', 'Male Factor+', 'Woman’s Choice', 'H24 Hydrate', 'H24 Rebuild Strength', 'HN Skin Booster', 'Dino Shake', 'Calcium Tablet', 'Joint Support', 'Herbalife Network', 'Herbal life network', 'Herbalife Network', 'Herbalifeline 60 softgels', 'Beta Heart', 'Multivitamin Mineral and Herbal', 'Vritiflife Brain Health', 'Vritilife Immune Health']
 
 
+chrome_options = Options()
+chrome_options.add_argument("--headless")  # Run Chrome in headless mode
+chrome_options.add_argument("--no-sandbox")  # Bypass OS security model
+chrome_options.add_argument("--disable-dev-shm-usage")  # Overcome limited resource problems
+chrome_options.add_argument("--disable-gpu")  # Applicable only for Windows OS, but safe to add
+chrome_options.add_argument("--remote-debugging-port=9222")  # Required for headless mode
+chrome_options.add_argument("--window-size=1920,1080")  # Set window size to avoid resolution issues
+
 for foodItem in foodList:
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     
 
     try:
